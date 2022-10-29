@@ -1,0 +1,1375 @@
+<!doctype html>
+
+
+
+
+
+<html>
+
+    
+
+    <head>
+
+        <title>Stundenplan - Post</title>
+
+        <meta charset="utf-8">
+
+    </head>
+
+    <script>
+
+        function getVps() {
+
+            var heute = document.getElementById("heute").innerText;
+
+			var heuteZeilen = heute.split("\n");
+
+			var heuteTag = heuteZeilen[6].split(" ")[1];
+
+			var heutetxt = heuteTag;
+
+			for(i = 8; i < heuteZeilen.length - 4; i++) {
+
+				heutetxt += "_" + heuteZeilen[i].replaceAll("\n","_").replaceAll("→","-").replaceAll("→","-").replaceAll(" ","-").replaceAll(/\t/g,"_").replaceAll(", ","-");
+
+			}
+
+			heutetxt = heutetxt.replaceAll(/[\u00A0\u1680​\u180e\u2000-\u2009\u200a​\u200b​\u202f\u205f​\u3000]/g,'');
+
+			heutetxt = heutetxt.replaceAll("__","_");
+
+			heutetxt = heutetxt.slice(0, -1);
+
+            document.getElementById("heutet").value = heutetxt;
+
+
+
+            var morgen = document.getElementById("morgen").innerText;
+
+			var morgenZeilen = morgen.split("\n");
+
+			var morgenTag = morgenZeilen[6].split(" ")[1];
+
+			var morgentxt = morgenTag;
+
+			for(i = 8; i < morgenZeilen.length - 4; i++) {
+
+				morgentxt += "_" + morgenZeilen[i].replaceAll("\n","_").replaceAll("→","-").replaceAll("→","-").replaceAll(" ","-").replaceAll(/\t/g,"_").replaceAll(", ","-");
+
+			}
+
+			morgentxt = morgentxt.replaceAll(/[\u00A0\u1680​\u180e\u2000-\u2009\u200a​\u200b​\u202f\u205f​\u3000]/g,'');
+
+			morgentxt = morgentxt.replaceAll("__","_");
+
+			morgentxt = morgentxt.slice(0, -1);
+
+            document.getElementById("morgent").value = morgentxt;
+
+
+
+        }
+
+    </script>
+
+    <body style="margin: 0; padding: 0;">
+
+        <form enctype="multipart/form-data" name="fileuploads" method="post">
+
+            <input name="heute" type="file" style="width: 80vw;">
+
+            <input name="morgen" type="file" style="width: 80vw;">
+
+            <input name="go" type="submit" style="width: 80vw;" value="go">
+
+        </form>
+
+        <form enctype="multipart/form-data" name="jsi" id="jssub" method="post">
+
+            <input name="vpheute" id="heutet" type="text" style="width: 80vw;">
+
+            <input name="vpmorgen" id="morgent" type="text" style="width: 80vw;">
+
+        </form>
+
+        
+
+                        <div id="heute" style="margin: 0; padding: 0; width: 45vw; float: left; display: inline;"><html>
+
+
+<head>
+
+
+<title>Untis 2022 Vertretungsplan</title>
+
+
+<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+
+
+<meta http-equiv='expires' content='0'>
+
+
+<style type='text/css'>
+
+
+
+
+
+body { margin-top: 0px; margin-left: 20px; margin-right: 20px;
+
+
+background: #fff; color: #272727; font: 80% Arial, Helvetica, sans-serif; }
+
+
+
+
+
+h1 { color: #ee7f00; font-size: 150%; font-weight: normal;}
+
+
+h1 strong { font-size: 200%; font-weight: normal; }
+
+
+h2 { font-size: 125%;}
+
+
+
+
+
+h1, h2 { margin: 0; padding: 0;}
+
+
+
+
+
+th { background: #000; color: #fff; }
+
+
+table.mon_list th, td { padding: 8px 4px;}
+
+
+
+
+
+
+
+
+.mon_title 
+
+
+{ 
+
+
+	font-weight: bold; 
+
+
+	font-size: 120%; 
+
+
+	clear: both; 
+
+
+	margin: 0; 
+
+
+}
+
+
+
+
+
+.inline_header
+
+
+{
+
+
+	font-weight: bold; 
+
+
+}
+
+
+
+
+
+table.info
+
+
+{
+
+
+	color: #000000; 
+
+
+	font-size: 100%;
+
+
+	border: 1px;
+
+
+	border-style:solid;
+
+
+	border-collapse:collapse;
+
+
+	padding: 8px 4px;
+
+
+}
+
+
+
+
+
+table.mon_list
+
+
+{
+
+
+	color: #000000; 
+
+
+	width: 100%; 
+
+
+	font-size: 100%;
+
+
+	border: 1px;
+
+
+	border-style:solid;
+
+
+	border-collapse:collapse;
+
+
+}
+
+
+
+
+
+table.mon_head
+
+
+{
+
+
+	color: #000000; 
+
+
+	width: 100%; 
+
+
+	font-size: 100%;
+
+
+}
+
+
+
+
+
+td.info,
+
+
+th.list,
+
+
+td.list,
+
+
+tr.list
+
+
+{
+
+
+	border: 1px;
+
+
+	border-style: solid;
+
+
+	border-color: black;
+
+
+	margin: 0px;
+
+
+	border-collapse:collapse;
+
+
+	padding: 3px;
+
+
+}
+
+
+
+
+
+tr.odd { background: #fad3a6; }
+
+
+tr.even { background: #fdecd9; }
+
+
+
+
+
+</style>
+
+
+<meta name='generator' content='Untis 2022'>
+
+
+<meta name='company' content='Gruber &amp; Petters Software, A-2000 Stockerau, Austria, www.untis.at'>
+
+
+<meta http-equiv='refresh' content='600; URL=subst_001.htm'>
+
+
+</head>
+
+
+
+
+
+<body>
+
+
+<table class='mon_head'>
+
+
+    <tr>
+
+
+        <td valign='bottom'><h1><strong>Untis</strong> 2022 <!-- Info-Stundenplan --></h1></td>
+
+
+        <td valign='bottom'></td>
+
+
+        <td align='right' valign='bottom'>
+
+
+            <p>WILH.-HITTORF-GYMN. MÜNSTER <span style='width:10px'>&nbsp;</span> D-48151, PRINZ-EUGEN-STR. 27<br />
+
+
+            SJ 2021/2022-2<span style='width:10px'>&nbsp;</span> <span style='width:10px'>&nbsp;</span> Stand: 17.02.2022 17:04</p>
+
+
+        </td>
+
+
+    </tr>
+
+
+</table>
+
+
+
+
+
+<center>
+
+
+<div class='mon_title'>17.2.2022 Donnerstag</div>
+
+
+<table class='mon_list' >
+
+
+<tr class='list'><th class='list' align='center' width='7'><b>Klasse(n)</b></th><th class='list' align='center' width='3'>Stunde</th><th class='list' align='center'>Fach</th><th class='list' align='center'>Raum</th><th class='list' align='center' width='20'>Art</th><th class='list' align='center' width='13'>Text</th></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>05a</s></b></td><td class='list' align='center'>2</td><td class='list' align='center'>MU</td><td class='list' align='center'><s>C204</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>05a</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>E</td><td class='list' align='center'><s>A103</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>05a</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>M</td><td class='list' align='center'><s>A103</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>05a</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>WP</td><td class='list' align='center'><s>A103</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>05b</s></b></td><td class='list' align='center'>1</td><td class='list' align='center'>D</td><td class='list' align='center'><s>A104</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>05b</s></b></td><td class='list' align='center'>2</td><td class='list' align='center'>MU</td><td class='list' align='center'><s>B6</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>05b</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>E</td><td class='list' align='center'><s>A104</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>05b</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>M</td><td class='list' align='center'><s>A104</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>05c</s></b></td><td class='list' align='center'>1</td><td class='list' align='center'>MU</td><td class='list' align='center'><s>C204</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>05c</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>KU</td><td class='list' align='center'><s>AK9</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>05c</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>VF</td><td class='list' align='center'><s>A105</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>05d</s></b></td><td class='list' align='center'>1</td><td class='list' align='center'>MU</td><td class='list' align='center'><s>B6</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>05d</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>D</td><td class='list' align='center'><s>B5</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>05d</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>WP</td><td class='list' align='center'><s>B5</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>06a</s></b></td><td class='list' align='center'>2</td><td class='list' align='center'>E</td><td class='list' align='center'><s>A118</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>06a</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>VF</td><td class='list' align='center'><s>A14</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>06a</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>D</td><td class='list' align='center'><s>A118</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>06a, 06b, 06c, 06d</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>D  FO</td><td class='list' align='center'><s>A116</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>06a, 06b, 06c, 06d</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>IE</td><td class='list' align='center'><s>A117</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>06a, 06b, 06c, 06d</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>E  FÖ</td><td class='list' align='center'><s>B105</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>06a, 06b, 06c, 06d</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>D</td><td class='list' align='center'><s>A15</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>06b</s></b></td><td class='list' align='center'>1</td><td class='list' align='center'>D</td><td class='list' align='center'><s>A117</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>06b</s></b></td><td class='list' align='center'>2</td><td class='list' align='center'>IF</td><td class='list' align='center'><s>B201</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>06b</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>M</td><td class='list' align='center'><s>A117</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>06b</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>E</td><td class='list' align='center'><s>A117</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>06c</s></b></td><td class='list' align='center'>1</td><td class='list' align='center'>KU</td><td class='list' align='center'><s>AK9</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>06c</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>E</td><td class='list' align='center'><s>A116</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>06d</s></b></td><td class='list' align='center'>1</td><td class='list' align='center'>VF</td><td class='list' align='center'><s>A10</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>06d</s></b></td><td class='list' align='center'>2</td><td class='list' align='center'>GE</td><td class='list' align='center'><s>B105</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>06d</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>D</td><td class='list' align='center'><s>B105</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>06d</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>E</td><td class='list' align='center'><s>B105</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>07a, 07c, 07b, 07d</s></b></td><td class='list' align='center'>1</td><td class='list' align='center'>F7</td><td class='list' align='center'><s>B2</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>07a, 07c, 07b, 07d</s></b></td><td class='list' align='center'>1</td><td class='list' align='center'>L7</td><td class='list' align='center'><s>B1</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>07a, 07c, 07b, 07d</s></b></td><td class='list' align='center'>1</td><td class='list' align='center'>F7</td><td class='list' align='center'><s>B3</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>07a, 07c, 07b, 07d</s></b></td><td class='list' align='center'>1</td><td class='list' align='center'>F7</td><td class='list' align='center'><s>B205</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>07a, 07c, 07b, 07d</s></b></td><td class='list' align='center'>1</td><td class='list' align='center'>L7</td><td class='list' align='center'><s>B105</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>07a, 07b, 07c, 07d</s></b></td><td class='list' align='center'>2</td><td class='list' align='center'>KR</td><td class='list' align='center'><s>A15</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>07a, 07b, 07c, 07d</s></b></td><td class='list' align='center'>2</td><td class='list' align='center'>KR</td><td class='list' align='center'><s>B1</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>07a, 07b, 07c, 07d</s></b></td><td class='list' align='center'>2</td><td class='list' align='center'>ER</td><td class='list' align='center'><s>B2</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>07a, 07b, 07c, 07d</s></b></td><td class='list' align='center'>2</td><td class='list' align='center'>PP</td><td class='list' align='center'><s>B3</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>07a, 07b, 07c, 07d</s></b></td><td class='list' align='center'>2</td><td class='list' align='center'>PP</td><td class='list' align='center'><s>B205</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>07a</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>E</td><td class='list' align='center'><s>B3</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>07a</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>SP</td><td class='list' align='center'><s>TH</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>07a</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>M</td><td class='list' align='center'><s>B3</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>07b</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>E</td><td class='list' align='center'><s>B2</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>07b</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>EK</td><td class='list' align='center'><s>AK8</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>07b</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>M</td><td class='list' align='center'><s>B2</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>07c</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>---</td><td class='list' align='center'><s>TH</s>→---</td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>07c</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>EK</td><td class='list' align='center'><s>B1</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>07c</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>M</td><td class='list' align='center'><s>B101</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>07d</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>D</td><td class='list' align='center'><s>B205</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>07d</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>CH</td><td class='list' align='center'><s>A112</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>07d</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>E</td><td class='list' align='center'><s>B205</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>08a</s></b></td><td class='list' align='center'>1</td><td class='list' align='center'>E</td><td class='list' align='center'><s>B103</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>08a</s></b></td><td class='list' align='center'>2</td><td class='list' align='center'>M</td><td class='list' align='center'><s>B103</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>08a</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>F7</td><td class='list' align='center'><s>B103</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>08a</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>D</td><td class='list' align='center'><s>B103</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>08b</s></b></td><td class='list' align='center'>1</td><td class='list' align='center'>EK</td><td class='list' align='center'><s>B104</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>08b</s></b></td><td class='list' align='center'>2</td><td class='list' align='center'>M</td><td class='list' align='center'><s>B104</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>08b</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>F7</td><td class='list' align='center'><s>B104</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>08b</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>E</td><td class='list' align='center'><s>B104</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>08b</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>WP</td><td class='list' align='center'><s>B104</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>08c</s></b></td><td class='list' align='center'>1</td><td class='list' align='center'>E</td><td class='list' align='center'><s>B203</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>08c</s></b></td><td class='list' align='center'>2</td><td class='list' align='center'>D</td><td class='list' align='center'><s>B203</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>08c</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>M</td><td class='list' align='center'><s>B203</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>08c</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>L7</td><td class='list' align='center'><s>B203</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>08c</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>WP</td><td class='list' align='center'><s>B203</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>08d</s></b></td><td class='list' align='center'>1</td><td class='list' align='center'>D</td><td class='list' align='center'><s>B204</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>08d</s></b></td><td class='list' align='center'>2</td><td class='list' align='center'>WP</td><td class='list' align='center'><s>B204</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>08d</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>MU</td><td class='list' align='center'><s>B6</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>08d</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>M</td><td class='list' align='center'><s>B204</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>08d</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>BI</td><td class='list' align='center'><s>A14</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>09a</s></b></td><td class='list' align='center'>1</td><td class='list' align='center'>GE</td><td class='list' align='center'><s>A101</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>09a</s></b></td><td class='list' align='center'>2</td><td class='list' align='center'>KU</td><td class='list' align='center'><s>A101</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>09a, 09b, 09c, 09d</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>GE</td><td class='list' align='center'><s>B101</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>09a, 09b, 09c, 09d</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>VF</td><td class='list' align='center'><s>A111</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>09a, 09b, 09c, 09d</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>IF</td><td class='list' align='center'><s>B201</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>09a, 09b, 09c, 09d</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>IF</td><td class='list' align='center'><s>B202</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>09a</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>PH</td><td class='list' align='center'><s>A108</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>09a</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>E</td><td class='list' align='center'><s>A101</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>09b</s></b></td><td class='list' align='center'>1</td><td class='list' align='center'>D</td><td class='list' align='center'><s>B101</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>09b</s></b></td><td class='list' align='center'>2</td><td class='list' align='center'>PH</td><td class='list' align='center'><s>A108</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>09b</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>WP</td><td class='list' align='center'><s>B101</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>09b</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>SP</td><td class='list' align='center'><s>TH</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>09c</s></b></td><td class='list' align='center'>1</td><td class='list' align='center'>GE</td><td class='list' align='center'><s>B102</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>09c</s></b></td><td class='list' align='center'>2</td><td class='list' align='center'>CH</td><td class='list' align='center'><s>A115</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>09c</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>SP</td><td class='list' align='center'><s>SH</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>09c</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>E</td><td class='list' align='center'><s>B102</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>09d</s></b></td><td class='list' align='center'>1</td><td class='list' align='center'>E</td><td class='list' align='center'><s>C1</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>09d</s></b></td><td class='list' align='center'>2</td><td class='list' align='center'>SP</td><td class='list' align='center'><s>TH</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>09d</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>GE</td><td class='list' align='center'><s>C1</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>09d</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>M</td><td class='list' align='center'><s>C1</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>EF</s></b></td><td class='list' align='center'>1</td><td class='list' align='center'>EK G3</td><td class='list' align='center'><s>AK8</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>EF</s></b></td><td class='list' align='center'>1</td><td class='list' align='center'>KR G2</td><td class='list' align='center'><s>C5</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>EF</s></b></td><td class='list' align='center'>1</td><td class='list' align='center'>SP G1</td><td class='list' align='center'><s>TH</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center' style='background-color: #00FF80' ><b><span style='color: #010101'><s>EF</s></span></b></td><td class='list' align='center' style='background-color: #00FF80' ><span style='color: #010101'>1</span></td><td class='list' align='center' style='background-color: #00FF80' ><span style='color: #010101'>KU G4</span></td><td class='list' align='center' style='background-color: #00FF80' ><span style='color: #010101'><s>A107</s></span></td><td class='list' align='center' style='background-color: #00FF80' ><span style='color: #010101'>Freisetzung</span></td><td class='list' align='center' style='background-color: #00FF80' ><span style='color: #010101'>&nbsp;</span></td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>EF</s></b></td><td class='list' align='center'>2</td><td class='list' align='center'>BI G3</td><td class='list' align='center'><s>A14</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>EF</s></b></td><td class='list' align='center'>2</td><td class='list' align='center'>KU G3</td><td class='list' align='center'><s>AK9</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>EF</s></b></td><td class='list' align='center'>2</td><td class='list' align='center'>EK G2</td><td class='list' align='center'><s>AK8</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>EF</s></b></td><td class='list' align='center'>2</td><td class='list' align='center'>GE G4</td><td class='list' align='center'><s>C5</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>EF</s></b></td><td class='list' align='center'>2</td><td class='list' align='center'>S8 G1</td><td class='list' align='center'><s>C207</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>EF</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>M  G2</td><td class='list' align='center'><s>C208</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>EF</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>M  G3</td><td class='list' align='center'><s>C107</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>EF</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>M  G4</td><td class='list' align='center'><s>C8</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>EF</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>M  G1</td><td class='list' align='center'><s>C3</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>EF</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>D  G2</td><td class='list' align='center'><s>C108</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>EF</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>D  G3</td><td class='list' align='center'><s>C8</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>EF</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>D  G4</td><td class='list' align='center'><s>C7</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>EF</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>D  G5</td><td class='list' align='center'><s>C106</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>EF</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>D  G1</td><td class='list' align='center'><s>C107</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>EF</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>SP G3</td><td class='list' align='center'><s>SH</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>EF</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>KU G2</td><td class='list' align='center'><s>AK9</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>EF</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>GE G3</td><td class='list' align='center'><s>C104</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>EF</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>MU G1</td><td class='list' align='center'><s>C204</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>EF</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>PL G3</td><td class='list' align='center'><s>C8</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>EF</s></b></td><td class='list' align='center'>6</td><td class='list' align='center'>GE G1</td><td class='list' align='center'><s>C3</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>EF</s></b></td><td class='list' align='center'>6</td><td class='list' align='center'>IF G1</td><td class='list' align='center'><s>A201</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>EF</s></b></td><td class='list' align='center'>6</td><td class='list' align='center'>IF G2</td><td class='list' align='center'><s>B201</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>EF</s></b></td><td class='list' align='center'>6</td><td class='list' align='center'>SP G5</td><td class='list' align='center'><s>GY</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>EF</s></b></td><td class='list' align='center'>6</td><td class='list' align='center'>PH G2</td><td class='list' align='center'><s>A111</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>EF</s></b></td><td class='list' align='center'>7</td><td class='list' align='center'>S0 G1</td><td class='list' align='center'><s>CK2</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>1</td><td class='list' align='center'>M  G2</td><td class='list' align='center'><s>C8</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>1</td><td class='list' align='center'>SW G2</td><td class='list' align='center'><s>C7</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>1</td><td class='list' align='center'>E  G4</td><td class='list' align='center'><s>C2</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>1</td><td class='list' align='center'>BI G1</td><td class='list' align='center'><s>A15</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>1</td><td class='list' align='center'>CH G1</td><td class='list' align='center'><s>A115</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>2</td><td class='list' align='center'>BI L1</td><td class='list' align='center'><s>A10</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>2</td><td class='list' align='center'>D  L1</td><td class='list' align='center'><s>C108</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>2</td><td class='list' align='center'>E  L2</td><td class='list' align='center'><s>C2</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>2</td><td class='list' align='center'>GE L1</td><td class='list' align='center'><s>C3</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>2</td><td class='list' align='center'>M  L1</td><td class='list' align='center'><s>C7</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>2</td><td class='list' align='center'>SW L1</td><td class='list' align='center'><s>C107</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>2</td><td class='list' align='center'>M  L3</td><td class='list' align='center'><s>C8</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>---</td><td class='list' align='center'><s>SH</s>→---</td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>PH G2</td><td class='list' align='center'><s>A108</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>D  G2</td><td class='list' align='center'><s>C206</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>E  G2</td><td class='list' align='center'><s>C207</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>EK G1</td><td class='list' align='center'><s>A9</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>SW G1</td><td class='list' align='center'><s>C104</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>KR G2</td><td class='list' align='center'><s>C2</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>EK G3</td><td class='list' align='center'><s>A9</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>PL G2</td><td class='list' align='center'><s>C207</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>D  G4</td><td class='list' align='center'><s>C206</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>KU G1</td><td class='list' align='center'><s>A107</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>M  G4</td><td class='list' align='center'><s>A15</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>CH L1</td><td class='list' align='center'><s>A115</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>D  L2</td><td class='list' align='center'><s>C208</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>M  L2</td><td class='list' align='center'><s>C2</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>E  L1</td><td class='list' align='center'><s>C207</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>EK L1</td><td class='list' align='center'><s>A9</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>F6 L1</td><td class='list' align='center'><s>C5</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>IF L1</td><td class='list' align='center'><s>A201</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>KU L1</td><td class='list' align='center'><s>A107</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>PH L1</td><td class='list' align='center'><s>A108</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>BI L2</td><td class='list' align='center'><s>An5</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>6</td><td class='list' align='center'>D  G1</td><td class='list' align='center'><s>C206</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>6</td><td class='list' align='center'>SP G3</td><td class='list' align='center'><s>TH</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>6</td><td class='list' align='center'>KU G3</td><td class='list' align='center'><s>A107</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>6</td><td class='list' align='center'>SW G3</td><td class='list' align='center'><s>C104</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>6 - 7</td><td class='list' align='center'>G0 G1</td><td class='list' align='center'><s>An1</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>7 - 8</td><td class='list' align='center'>IP G1</td><td class='list' align='center'><s>CK0</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>7 - 8</td><td class='list' align='center'>SP G5</td><td class='list' align='center'><s>TH</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q1</s></b></td><td class='list' align='center'>7 - 8</td><td class='list' align='center'>SP G6</td><td class='list' align='center'><s>An2</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q2</s></b></td><td class='list' align='center'>1 - 2</td><td class='list' align='center'>M  L1</td><td class='list' align='center'><s>C208</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q2</s></b></td><td class='list' align='center'>1 - 2</td><td class='list' align='center'>BI L1</td><td class='list' align='center'><s>A13</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q2</s></b></td><td class='list' align='center'>1 - 2</td><td class='list' align='center'>E  L1</td><td class='list' align='center'><s>CK2</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q2</s></b></td><td class='list' align='center'>1 - 2</td><td class='list' align='center'>D  L1</td><td class='list' align='center'><s>C206</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q2</s></b></td><td class='list' align='center'>1 - 2</td><td class='list' align='center'>SW L1</td><td class='list' align='center'><s>C104</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q2</s></b></td><td class='list' align='center'>1 - 2</td><td class='list' align='center'>EK L1</td><td class='list' align='center'><s>A9</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q2</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>KR G1</td><td class='list' align='center'><s>CK2</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q2</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>PL G1</td><td class='list' align='center'><s>C2</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q2</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>ER G1</td><td class='list' align='center'><s>C5</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q2</s></b></td><td class='list' align='center'>3</td><td class='list' align='center'>BI G3</td><td class='list' align='center'><s>A13</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q2</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>M  G1</td><td class='list' align='center'><s>C5</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q2</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>M  G2</td><td class='list' align='center'><s>C208</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q2</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>IF G1</td><td class='list' align='center'><s>B201</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q2</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>SW G1</td><td class='list' align='center'><s>C104</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q2</s></b></td><td class='list' align='center'>4</td><td class='list' align='center'>BI G2</td><td class='list' align='center'><s>A10</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q2</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>GE L1</td><td class='list' align='center'><s>C3</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q2</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>IF L1</td><td class='list' align='center'><s>B201</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q2</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>F6 L1</td><td class='list' align='center'><s>An3</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q2</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>M  L2</td><td class='list' align='center'><s>C106</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q2</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>PH L1</td><td class='list' align='center'><s>A111</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q2</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>CH L1</td><td class='list' align='center'><s>An2</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q2</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>E  L2</td><td class='list' align='center'><s>CK2</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q2</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>D  L2</td><td class='list' align='center'><s>C206</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q2</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>D  L2</td><td class='list' align='center'><s>C206</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q2</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>S8 L1</td><td class='list' align='center'><s>An1</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b><s>Q2</s></b></td><td class='list' align='center'>5</td><td class='list' align='center'>KU L1</td><td class='list' align='center'><s>An4</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b><s>Q2</s></b></td><td class='list' align='center'>6 - 7</td><td class='list' align='center'>SP G5</td><td class='list' align='center'><s>SH</s></td><td class='list' align='center'>Freisetzung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+</table>
+
+
+<p>
+
+
+<font size='3' face='Arial'>
+
+
+Periode2   SJ 2021/2022-2
+
+
+</font></center>
+
+
+
+
+
+<p><center><font face='Arial' size='2'><a href='http://www.untis.at' target='_blank' >Untis Stundenplan Software</a></font></center>
+
+
+</body>
+
+
+</html>
+
+                        </div>
+
+                        <div id="morgen" style="margin: 0; padding: 0; width: 45vw; float: right; display: inline;"><html>
+
+
+<head>
+
+
+<title>Untis 2022 Vertretungsplan</title>
+
+
+<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+
+
+<meta http-equiv='expires' content='0'>
+
+
+<style type='text/css'>
+
+
+
+
+
+body { margin-top: 0px; margin-left: 20px; margin-right: 20px;
+
+
+background: #fff; color: #272727; font: 80% Arial, Helvetica, sans-serif; }
+
+
+
+
+
+h1 { color: #ee7f00; font-size: 150%; font-weight: normal;}
+
+
+h1 strong { font-size: 200%; font-weight: normal; }
+
+
+h2 { font-size: 125%;}
+
+
+
+
+
+h1, h2 { margin: 0; padding: 0;}
+
+
+
+
+
+th { background: #000; color: #fff; }
+
+
+table.mon_list th, td { padding: 8px 4px;}
+
+
+
+
+
+
+
+
+.mon_title 
+
+
+{ 
+
+
+	font-weight: bold; 
+
+
+	font-size: 120%; 
+
+
+	clear: both; 
+
+
+	margin: 0; 
+
+
+}
+
+
+
+
+
+.inline_header
+
+
+{
+
+
+	font-weight: bold; 
+
+
+}
+
+
+
+
+
+table.info
+
+
+{
+
+
+	color: #000000; 
+
+
+	font-size: 100%;
+
+
+	border: 1px;
+
+
+	border-style:solid;
+
+
+	border-collapse:collapse;
+
+
+	padding: 8px 4px;
+
+
+}
+
+
+
+
+
+table.mon_list
+
+
+{
+
+
+	color: #000000; 
+
+
+	width: 100%; 
+
+
+	font-size: 100%;
+
+
+	border: 1px;
+
+
+	border-style:solid;
+
+
+	border-collapse:collapse;
+
+
+}
+
+
+
+
+
+table.mon_head
+
+
+{
+
+
+	color: #000000; 
+
+
+	width: 100%; 
+
+
+	font-size: 100%;
+
+
+}
+
+
+
+
+
+td.info,
+
+
+th.list,
+
+
+td.list,
+
+
+tr.list
+
+
+{
+
+
+	border: 1px;
+
+
+	border-style: solid;
+
+
+	border-color: black;
+
+
+	margin: 0px;
+
+
+	border-collapse:collapse;
+
+
+	padding: 3px;
+
+
+}
+
+
+
+
+
+tr.odd { background: #fad3a6; }
+
+
+tr.even { background: #fdecd9; }
+
+
+
+
+
+</style>
+
+
+<meta name='generator' content='Untis 2022'>
+
+
+<meta name='company' content='Gruber &amp; Petters Software, A-2000 Stockerau, Austria, www.untis.at'>
+
+
+<meta http-equiv='refresh' content='600; URL=subst_001.htm'>
+
+
+</head>
+
+
+
+
+
+<body>
+
+
+<table class='mon_head'>
+
+
+    <tr>
+
+
+        <td valign='bottom'><h1><strong>Untis</strong> 2022 <!-- Info-Stundenplan --></h1></td>
+
+
+        <td valign='bottom'></td>
+
+
+        <td align='right' valign='bottom'>
+
+
+            <p>WILH.-HITTORF-GYMN. MÜNSTER <span style='width:10px'>&nbsp;</span> D-48151, PRINZ-EUGEN-STR. 27<br />
+
+
+            SJ 2021/2022-2<span style='width:10px'>&nbsp;</span> <span style='width:10px'>&nbsp;</span> Stand: 17.02.2022 17:04</p>
+
+
+        </td>
+
+
+    </tr>
+
+
+</table>
+
+
+
+
+
+<center>
+
+
+<div class='mon_title'>18.2.2022 Freitag</div>
+
+
+<table class='mon_list' >
+
+
+<tr class='list'><th class='list' align='center' width='7'><b>Klasse(n)</b></th><th class='list' align='center' width='3'>Stunde</th><th class='list' align='center'>Fach</th><th class='list' align='center'>Raum</th><th class='list' align='center' width='20'>Art</th><th class='list' align='center' width='13'>Text</th></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b>05a</b></td><td class='list' align='center'>4</td><td class='list' align='center'><s>MU</s>→EK</td><td class='list' align='center'><s>B5</s>→A9</td><td class='list' align='center'>Tausch</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b>05d</b></td><td class='list' align='center'>3</td><td class='list' align='center'>E</td><td class='list' align='center'>B5</td><td class='list' align='center'>Vertretung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b>05d</b></td><td class='list' align='center'>4</td><td class='list' align='center'>KU</td><td class='list' align='center'>AK9</td><td class='list' align='center'>Vertretung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b>05d</b></td><td class='list' align='center'>5</td><td class='list' align='center'>VF</td><td class='list' align='center'>A10</td><td class='list' align='center'>Vertretung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b>06a</b></td><td class='list' align='center'>3</td><td class='list' align='center'>M</td><td class='list' align='center'>A118</td><td class='list' align='center'>Vertretung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b>06b</b></td><td class='list' align='center'>1</td><td class='list' align='center'>VF</td><td class='list' align='center'><s>A14</s>→A117</td><td class='list' align='center'>Vertretung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b>06b</b></td><td class='list' align='center'>3</td><td class='list' align='center'>SP</td><td class='list' align='center'>GY</td><td class='list' align='center'>Vertretung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b>06c</b></td><td class='list' align='center'>5</td><td class='list' align='center'>D</td><td class='list' align='center'>A116</td><td class='list' align='center'>Vertretung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b>06d</b></td><td class='list' align='center'>2</td><td class='list' align='center'><s>SP</s>→E</td><td class='list' align='center'><s>SH</s>→B105</td><td class='list' align='center'>Sondereins.</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b>07b</b></td><td class='list' align='center'>1</td><td class='list' align='center'>CH</td><td class='list' align='center'><s>A112</s>→B2</td><td class='list' align='center'>Raumwechsel</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b>07d</b></td><td class='list' align='center'>5</td><td class='list' align='center'>GE</td><td class='list' align='center'><s>B205</s>→A201</td><td class='list' align='center'>Raumwechsel</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b>08a, 08b, 08c, 08d</b></td><td class='list' align='center'>4</td><td class='list' align='center'>KR</td><td class='list' align='center'><s>A15</s>→CK2</td><td class='list' align='center'>Raumwechsel</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b>08c</b></td><td class='list' align='center'>2</td><td class='list' align='center'>WP</td><td class='list' align='center'>B203</td><td class='list' align='center'>Vertretung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center' style='background-color: #FFFFFF' ><b>09a, 09b, 09c, 09d</b></td><td class='list' align='center' style='background-color: #FFFFFF' >6</td><td class='list' align='center' style='background-color: #FFFFFF' ><s>S8</s></td><td class='list' align='center' style='background-color: #FFFFFF' >---</td><td class='list' align='center' style='background-color: #FFFFFF' >Entfall</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b>09c</b></td><td class='list' align='center'>4</td><td class='list' align='center'>BI</td><td class='list' align='center'>A10</td><td class='list' align='center'>Vertretung</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b>Q1</b></td><td class='list' align='center'>4</td><td class='list' align='center'>SW G3</td><td class='list' align='center'>C2</td><td class='list' align='center'>EVA</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list odd'><td class='list' align='center'><b>Q1</b></td><td class='list' align='center'>5</td><td class='list' align='center'>BI G2</td><td class='list' align='center'>A13</td><td class='list' align='center'>EVA</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+<tr class='list even'><td class='list' align='center'><b>Q2</b></td><td class='list' align='center'>4</td><td class='list' align='center'>S8 G1</td><td class='list' align='center'>C107</td><td class='list' align='center'>EVA</td><td class='list' align='center'>&nbsp;</td></tr>
+
+
+</table>
+
+
+<p>
+
+
+<font size='3' face='Arial'>
+
+
+Periode2   SJ 2021/2022-2
+
+
+</font></center>
+
+
+
+
+
+<p><center><font face='Arial' size='2'><a href='http://www.untis.at' target='_blank' >Untis Stundenplan Software</a></font></center>
+
+
+</body>
+
+
+</html>
+
+                        </div>
+
+                        <script>
+
+                            getVps();
+
+                        </script>
+
+                         </body>
+
+
+
+</html>
